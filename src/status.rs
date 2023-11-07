@@ -10,7 +10,7 @@ mod security;
 mod state;
 mod wifi;
 
-use anyhow::anyhow;
+use crate::Error;
 use num_derive::{FromPrimitive, ToPrimitive};
 use num_traits::{FromPrimitive, ToPrimitive};
 
@@ -96,10 +96,10 @@ impl From<Status> for u32 {
 }
 
 impl TryFrom<u32> for Status {
-    type Error = anyhow::Error;
+    type Error = Error;
 
     fn try_from(value: u32) -> Result<Self, Self::Error> {
-        Self::from_u32(value).ok_or_else(|| anyhow!("invalid Status value: {value:#08X}"))
+        Self::from_u32(value).ok_or(Error::InvalidStatus(value))
     }
 }
 
@@ -117,9 +117,9 @@ impl From<Space> for u32 {
 }
 
 impl TryFrom<u32> for Space {
-    type Error = anyhow::Error;
+    type Error = Error;
 
     fn try_from(value: u32) -> Result<Self, Self::Error> {
-        Self::from_u32(value).ok_or_else(|| anyhow!("invalid Space value: {value:#08X}"))
+        Self::from_u32(value).ok_or(Error::InvalidSpace(value))
     }
 }
