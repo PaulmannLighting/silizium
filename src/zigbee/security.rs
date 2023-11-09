@@ -1,8 +1,10 @@
 use le_stream::derive::{FromLeBytes, ToLeBytes};
 
+pub type ManKey = [u8; 16];
+
 #[derive(Debug, Eq, PartialEq, FromLeBytes, ToLeBytes)]
 pub struct ManContext {
-    core_key_type: [u8; 16],
+    core_key_type: ManKey,
     key_index: u8,
     derived_type: u8,
     eui64: [u8; 8],
