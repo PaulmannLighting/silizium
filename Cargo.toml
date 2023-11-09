@@ -14,4 +14,4 @@ authors = ["Richard Neumnn <neumann@paulmann.de>"]
 [dependencies]
 num-derive = "0.4.1"
 num-traits = "0.2.17"
-le-stream = { git = "https://github.com/PaulmannLighting/le-stream.git", version = "0.1.0", features = ["derive"] }
+le-stream = { git = "https://github.com/PaulmannLighting/le-stream.git", version = "0.1.0", features = ["derive"], optional = true }
