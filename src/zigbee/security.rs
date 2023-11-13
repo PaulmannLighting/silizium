@@ -191,6 +191,10 @@ impl From<ManFlags> for u8 {
     }
 }
 
+/// Security Manager context flags.
+///
+/// # Documentation
+/// [Link](https://docs.silabs.com/d/zigbee-stack-api/7.2.2/zigbee-security-manager#sl-zigbee-sec-man-flags-t).
 impl TryFrom<u8> for ManFlags {
     type Error = u8;
 
