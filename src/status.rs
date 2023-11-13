@@ -10,7 +10,7 @@ mod security;
 mod state;
 mod wifi;
 
-use crate::Error;
+use le_stream::FromLeBytes;
 use num_derive::{FromPrimitive, ToPrimitive};
 use num_traits::{FromPrimitive, ToPrimitive};
 
@@ -96,10 +96,10 @@ impl From<Status> for u32 {
 }
 
 impl TryFrom<u32> for Status {
-    type Error = Error;
+    type Error = u32;
 
     fn try_from(value: u32) -> Result<Self, Self::Error> {
-        Self::from_u32(value).ok_or(Error::InvalidStatus(value))
+        Self::from_u32(value).ok_or(value)
     }
 }
 
@@ -117,9 +117,9 @@ impl From<Space> for u32 {
 }
 
 impl TryFrom<u32> for Space {
-    type Error = Error;
+    type Error = u32;
 
     fn try_from(value: u32) -> Result<Self, Self::Error> {
-        Self::from_u32(value).ok_or(Error::InvalidSpace(value))
+        Self::from_u32(value).ok_or(value)
     }
 }
