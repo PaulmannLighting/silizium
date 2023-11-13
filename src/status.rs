@@ -10,7 +10,6 @@ mod security;
 mod state;
 mod wifi;
 
-use le_stream::FromLeBytes;
 use num_derive::{FromPrimitive, ToPrimitive};
 use num_traits::{FromPrimitive, ToPrimitive};
 
