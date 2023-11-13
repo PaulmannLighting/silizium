@@ -1,7 +1,9 @@
 #[cfg(feature = "le-stream")]
 use le_stream::derive::{FromLeBytes, ToLeBytes};
+use num_derive::{FromPrimitive, ToPrimitive};
+use num_traits::{FromPrimitive, ToPrimitive};
 
-pub type EmberEUI64 = [u8; 8];
+type EmberEUI64 = u64;
 pub type ManKey = [u8; 16];
 pub type EmberKeyStructBitmask = u16;
 
@@ -11,7 +13,7 @@ pub struct ManContext {
     core_key_type: ManKey,
     key_index: u8,
     derived_type: u8,
-    eui64: [u8; 8],
+    eui64: EmberEUI64,
     multi_network_index: u8,
     flags: u8,
     psa_key_alg_permission: u32,
@@ -172,5 +174,27 @@ impl ManApsKeyMetadata {
     #[must_use]
     pub const fn ttl_in_seconds(&self) -> u16 {
         self.ttl_in_seconds
+    }
+}
+
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd, FromPrimitive, ToPrimitive)]
+pub enum ManFlags {
+    None = 0x00,
+    KeyIndexIsValid = 0x01,
+    EuiIsValid = 0x02,
+    UnconfirmedTransientKey = 0x04,
+}
+
+impl From<ManFlags> for u8 {
+    fn from(man_flags: ManFlags) -> Self {
+        man_flags.to_u8().expect("could not convert ManFlags to u8")
+    }
+}
+
+impl TryFrom<u8> for ManFlags {
+    type Error = u8;
+
+    fn try_from(value: u8) -> Result<Self, Self::Error> {
+        Self::from_u8(value).ok_or(value)
     }
 }
