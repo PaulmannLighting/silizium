@@ -8,7 +8,7 @@ pub type ManKey = [u8; 16];
 pub type EmberKeyStructBitmask = u16;
 
 #[cfg_attr(feature = "le-stream", derive(FromLeBytes, ToLeBytes))]
-#[derive(Debug, Eq, PartialEq)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub struct ManContext {
     core_key_type: ManKey,
     key_index: u8,
@@ -78,7 +78,7 @@ impl ManContext {
 }
 
 #[cfg_attr(feature = "le-stream", derive(FromLeBytes, ToLeBytes))]
-#[derive(Debug, Eq, PartialEq)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub struct ManNetworkKeyInfo {
     network_key_set: bool,
     alternate_network_key_set: bool,
@@ -132,7 +132,7 @@ impl ManNetworkKeyInfo {
 }
 
 #[cfg_attr(feature = "le-stream", derive(FromLeBytes, ToLeBytes))]
-#[derive(Debug, Eq, PartialEq)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub struct ManApsKeyMetadata {
     bitmask: EmberKeyStructBitmask,
     outgoing_frame_counter: u32,
