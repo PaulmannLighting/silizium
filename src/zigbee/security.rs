@@ -5,9 +5,9 @@ use num_traits::FromPrimitive;
 
 mod ember {
     pub type Eui64 = u64;
+    pub type KeyStructBitmask = u16;
 }
 pub type ManKey = [u8; 16];
-pub type EmberKeyStructBitmask = u16;
 
 #[cfg_attr(feature = "le-stream", derive(FromLeBytes, ToLeBytes))]
 #[derive(Clone, Debug, Eq, PartialEq)]
@@ -136,7 +136,7 @@ impl ManNetworkKeyInfo {
 #[cfg_attr(feature = "le-stream", derive(FromLeBytes, ToLeBytes))]
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct ManApsKeyMetadata {
-    bitmask: EmberKeyStructBitmask,
+    bitmask: ember::KeyStructBitmask,
     outgoing_frame_counter: u32,
     incoming_frame_counter: u32,
     ttl_in_seconds: u16,
@@ -145,7 +145,7 @@ pub struct ManApsKeyMetadata {
 impl ManApsKeyMetadata {
     #[must_use]
     pub const fn new(
-        bitmask: EmberKeyStructBitmask,
+        bitmask: ember::KeyStructBitmask,
         outgoing_frame_counter: u32,
         incoming_frame_counter: u32,
         ttl_in_seconds: u16,
@@ -159,7 +159,7 @@ impl ManApsKeyMetadata {
     }
 
     #[must_use]
-    pub const fn bitmask(&self) -> EmberKeyStructBitmask {
+    pub const fn bitmask(&self) -> ember::KeyStructBitmask {
         self.bitmask
     }
 
