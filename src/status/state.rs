@@ -1,6 +1,7 @@
 use num_derive::{FromPrimitive, ToPrimitive};
 
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd, FromPrimitive, ToPrimitive)]
+#[repr(u32)]
 pub enum State {
     Invalid = 0x0002,
     NotReady = 0x0003,

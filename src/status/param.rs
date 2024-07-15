@@ -1,6 +1,7 @@
 use num_derive::{FromPrimitive, ToPrimitive};
 
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd, FromPrimitive, ToPrimitive)]
+#[repr(u32)]
 pub enum Param {
     InvalidParameter = 0x0021,
     NullPointer = 0x0022,

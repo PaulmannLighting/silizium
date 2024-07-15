@@ -1,6 +1,7 @@
 use num_derive::{FromPrimitive, ToPrimitive};
 
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd, FromPrimitive, ToPrimitive)]
+#[repr(u32)]
 pub enum Alloc {
     AllocationFailed = 0x0019,
     NoMoreResource = 0x001A,

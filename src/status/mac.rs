@@ -1,6 +1,7 @@
 use num_derive::{FromPrimitive, ToPrimitive};
 
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd, FromPrimitive, ToPrimitive)]
+#[repr(u32)]
 pub enum Mac {
     NoData = 0x003E,
     NoAckReceived = 0x003F,
