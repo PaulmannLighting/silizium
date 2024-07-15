@@ -3,7 +3,9 @@ use le_stream::derive::{FromLeBytes, ToLeBytes};
 use num_derive::FromPrimitive;
 use num_traits::FromPrimitive;
 
-type EmberEUI64 = u64;
+mod ember {
+    pub type Eui64 = u64;
+}
 pub type ManKey = [u8; 16];
 pub type EmberKeyStructBitmask = u16;
 
@@ -13,7 +15,7 @@ pub struct ManContext {
     core_key_type: ManKey,
     key_index: u8,
     derived_type: u8,
-    eui64: EmberEUI64,
+    eui64: ember::Eui64,
     multi_network_index: u8,
     flags: u8,
     psa_key_alg_permission: u32,
@@ -25,7 +27,7 @@ impl ManContext {
         core_key_type: ManKey,
         key_index: u8,
         derived_type: u8,
-        eui64: EmberEUI64,
+        eui64: ember::Eui64,
         multi_network_index: u8,
         flags: u8,
         psa_key_alg_permission: u32,
@@ -57,7 +59,7 @@ impl ManContext {
     }
 
     #[must_use]
-    pub const fn eui64(&self) -> &EmberEUI64 {
+    pub const fn eui64(&self) -> &ember::Eui64 {
         &self.eui64
     }
 
