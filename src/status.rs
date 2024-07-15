@@ -103,6 +103,7 @@ impl TryFrom<u32> for Status {
 }
 
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd, FromPrimitive, ToPrimitive)]
+#[repr(u32)]
 pub enum Space {
     Generic = 0x0000,
     Wifi = 0x0B00,
