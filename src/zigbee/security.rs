@@ -1,7 +1,7 @@
 #[cfg(feature = "le-stream")]
 use le_stream::derive::{FromLeBytes, ToLeBytes};
-use num_derive::{FromPrimitive, ToPrimitive};
-use num_traits::{FromPrimitive, ToPrimitive};
+use num_derive::FromPrimitive;
+use num_traits::FromPrimitive;
 
 type EmberEUI64 = u64;
 pub type ManKey = [u8; 16];
@@ -181,7 +181,8 @@ impl ManApsKeyMetadata {
 ///
 /// # Documentation
 /// [Link](https://docs.silabs.com/d/zigbee-stack-api/7.2.2/zigbee-security-manager#sl-zigbee-sec-man-flags-t).
-#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd, FromPrimitive, ToPrimitive)]
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd, FromPrimitive)]
+#[repr(u8)]
 pub enum ManFlags {
     None = 0x00,
     KeyIndexIsValid = 0x01,
@@ -191,7 +192,7 @@ pub enum ManFlags {
 
 impl From<ManFlags> for u8 {
     fn from(man_flags: ManFlags) -> Self {
-        man_flags.to_u8().expect("could not convert ManFlags to u8")
+        man_flags as Self
     }
 }
 
