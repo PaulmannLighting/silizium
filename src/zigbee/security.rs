@@ -1,5 +1,5 @@
 #[cfg(feature = "le-stream")]
-use le_stream::derive::{FromLeBytes, ToLeBytes};
+use le_stream::derive::{FromLeStream, ToLeStream};
 use num_derive::FromPrimitive;
 use num_traits::FromPrimitive;
 
@@ -9,7 +9,7 @@ mod ember {
 }
 pub type ManKey = [u8; 16];
 
-#[cfg_attr(feature = "le-stream", derive(FromLeBytes, ToLeBytes))]
+#[cfg_attr(feature = "le-stream", derive(FromLeStream, ToLeStream))]
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct ManContext {
     core_key_type: ManKey,
@@ -79,7 +79,7 @@ impl ManContext {
     }
 }
 
-#[cfg_attr(feature = "le-stream", derive(FromLeBytes, ToLeBytes))]
+#[cfg_attr(feature = "le-stream", derive(FromLeStream, ToLeStream))]
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct ManNetworkKeyInfo {
     network_key_set: bool,
@@ -133,7 +133,7 @@ impl ManNetworkKeyInfo {
     }
 }
 
-#[cfg_attr(feature = "le-stream", derive(FromLeBytes, ToLeBytes))]
+#[cfg_attr(feature = "le-stream", derive(FromLeStream, ToLeStream))]
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct ManApsKeyMetadata {
     bitmask: ember::KeyStructBitmask,
