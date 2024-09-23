@@ -14,4 +14,4 @@ authors = ["Richard Neumnn <neumann@paulmann.de>"]
 [dependencies]
 num-derive = "0.4"
 num-traits = "0.2"
-le-stream = { version = "0.2", features = ["derive"], optional = true }
+le-stream = { version = "0.4", features = ["derive"], optional = true }
