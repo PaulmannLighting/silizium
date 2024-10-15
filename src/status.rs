@@ -155,6 +155,8 @@ pub enum Status {
     TooLong = 0x0049,
     /// Data received does not form a complete command.
     CommandIncomplete = 0x004A,
+    /// An invalid scan duration was supplied.
+    BadScanDuration = 0x0050,
     /// Invalid firmware key set.
     WifiInvalidKey = 0x0B01,
     /// The firmware download took too long.
