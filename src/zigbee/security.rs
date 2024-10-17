@@ -6,35 +6,36 @@ use num_derive::FromPrimitive;
 use num_traits::FromPrimitive;
 use std::time::Duration;
 
-mod ember {
-    pub type Eui64 = u64;
-    pub type KeyStructBitmask = u16;
-}
-
 /// This data structure contains the key data that is passed into various other functions.
 pub type ManKey = [u8; 16];
 
 /// Context for Zigbee Security Manager operations.
 #[cfg_attr(feature = "le-stream", derive(FromLeStream, ToLeStream))]
 #[derive(Clone, Debug, Eq, PartialEq)]
-pub struct ManContext {
+pub struct ManContext<Eui64>
+where
+    Eui64: Copy,
+{
     core_key_type: ManKey,
     key_index: u8,
     derived_type: u8,
-    eui64: ember::Eui64,
+    eui64: Eui64,
     multi_network_index: u8,
     flags: u8,
     psa_key_alg_permission: u32,
 }
 
-impl ManContext {
+impl<Eui64> ManContext<Eui64>
+where
+    Eui64: Copy,
+{
     /// Creates a new `ManContext`.
     #[must_use]
     pub const fn new(
         core_key_type: ManKey,
         key_index: u8,
         derived_type: u8,
-        eui64: ember::Eui64,
+        eui64: Eui64,
         multi_network_index: u8,
         flags: u8,
         psa_key_alg_permission: u32,
@@ -70,8 +71,8 @@ impl ManContext {
 
     /// Return the EUI64 associated with this key.
     #[must_use]
-    pub const fn eui64(&self) -> &ember::Eui64 {
-        &self.eui64
+    pub const fn eui64(&self) -> Eui64 {
+        self.eui64
     }
 
     /// Returns the multi-network index.
@@ -157,18 +158,24 @@ impl ManNetworkKeyInfo {
 /// This data structure contains the metadata pertaining to an APS key.
 #[cfg_attr(feature = "le-stream", derive(FromLeStream, ToLeStream))]
 #[derive(Clone, Debug, Eq, PartialEq)]
-pub struct ManApsKeyMetadata {
-    bitmask: ember::KeyStructBitmask,
+pub struct ManApsKeyMetadata<Bitmask>
+where
+    Bitmask: Copy,
+{
+    bitmask: Bitmask,
     outgoing_frame_counter: u32,
     incoming_frame_counter: u32,
     ttl_in_seconds: u16,
 }
 
-impl ManApsKeyMetadata {
+impl<Bitmask> ManApsKeyMetadata<Bitmask>
+where
+    Bitmask: Copy,
+{
     /// Creates a new `ManApsKeyMetadata`.
     #[must_use]
     pub const fn new(
-        bitmask: ember::KeyStructBitmask,
+        bitmask: Bitmask,
         outgoing_frame_counter: u32,
         incoming_frame_counter: u32,
         ttl_in_seconds: u16,
@@ -183,7 +190,7 @@ impl ManApsKeyMetadata {
 
     /// Returns the bitmask.
     #[must_use]
-    pub const fn bitmask(&self) -> ember::KeyStructBitmask {
+    pub const fn bitmask(&self) -> Bitmask {
         self.bitmask
     }
 
