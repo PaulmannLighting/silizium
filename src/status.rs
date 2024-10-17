@@ -209,7 +209,7 @@ pub enum Status {
 
 impl Display for Status {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{self:?}")
+        write!(f, "Sl{self:?}")
     }
 }
 
@@ -220,7 +220,7 @@ impl From<Status> for u32 {
 }
 
 impl LowerHex for Status {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(f, "{:#010x}", u32::from(*self))
     }
 }
@@ -234,7 +234,7 @@ impl TryFrom<u32> for Status {
 }
 
 impl UpperHex for Status {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(f, "{:#010X}", u32::from(*self))
     }
 }

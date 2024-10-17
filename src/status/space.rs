@@ -17,7 +17,7 @@ pub enum Space {
 
 impl Display for Space {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{self:?}")
+        write!(f, "SlSpace{self:?}")
     }
 }
 
@@ -28,7 +28,7 @@ impl From<Space> for u32 {
 }
 
 impl LowerHex for Space {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(f, "{:#010x}", u32::from(*self))
     }
 }
@@ -42,7 +42,7 @@ impl TryFrom<u32> for Space {
 }
 
 impl UpperHex for Space {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(f, "{:#010X}", u32::from(*self))
     }
 }
