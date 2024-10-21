@@ -7,10 +7,7 @@ mod space;
 /// Status codes common across all platforms.
 ///
 /// See [docs.silabs.com](https://docs.silabs.com/mcu/5.9/efr32bg1/group-sl-status) for further information.
-#[cfg_attr(
-    feature = "num-traits",
-    derive(num_derive::FromPrimitive, num_derive::ToPrimitive)
-)]
+#[cfg_attr(feature = "num-traits", derive(num_derive::FromPrimitive))]
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd)]
 #[repr(u32)]
 pub enum Status {

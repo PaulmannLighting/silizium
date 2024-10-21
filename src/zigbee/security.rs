@@ -228,10 +228,7 @@ where
 ///
 /// # Documentation
 /// [Link](https://docs.silabs.com/d/zigbee-stack-api/7.2.2/zigbee-security-manager#sl-zigbee-sec-man-flags-t).
-#[cfg_attr(
-    feature = "num-traits",
-    derive(num_derive::FromPrimitive, num_derive::ToPrimitive)
-)]
+#[cfg_attr(feature = "num-traits", derive(num_derive::FromPrimitive))]
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd)]
 #[repr(u8)]
 pub enum ManFlags {
