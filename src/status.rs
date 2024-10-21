@@ -1,8 +1,5 @@
 use std::fmt::{Display, Formatter, LowerHex, UpperHex};
 
-use num_derive::{FromPrimitive, ToPrimitive};
-use num_traits::{FromPrimitive, ToPrimitive};
-
 pub use space::Space;
 
 mod space;
@@ -10,7 +7,11 @@ mod space;
 /// Status codes common across all platforms.
 ///
 /// See [docs.silabs.com](https://docs.silabs.com/mcu/5.9/efr32bg1/group-sl-status) for further information.
-#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd, FromPrimitive, ToPrimitive)]
+#[cfg_attr(
+    feature = "num-traits",
+    derive(num_derive::FromPrimitive, num_derive::ToPrimitive)
+)]
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd)]
 #[repr(u32)]
 pub enum Status {
     /// No error.
@@ -213,28 +214,14 @@ impl Display for Status {
     }
 }
 
-impl From<Status> for u32 {
-    fn from(status: Status) -> Self {
-        status.to_u32().expect("could not convert Status to u32")
-    }
-}
-
 impl LowerHex for Status {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{:#010x}", u32::from(*self))
-    }
-}
-
-impl TryFrom<u32> for Status {
-    type Error = u32;
-
-    fn try_from(value: u32) -> Result<Self, Self::Error> {
-        Self::from_u32(value).ok_or(value)
+        write!(f, "{:#010x}", *self as u32)
     }
 }
 
 impl UpperHex for Status {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{:#010X}", u32::from(*self))
+        write!(f, "{:#010X}", *self as u32)
     }
 }

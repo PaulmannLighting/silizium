@@ -1,16 +1,15 @@
 //! Zigbee security management.
 
-#[cfg(feature = "le-stream")]
-use le_stream::derive::{FromLeStream, ToLeStream};
-use num_derive::FromPrimitive;
-use num_traits::FromPrimitive;
 use std::time::Duration;
 
 /// This data structure contains the key data that is passed into various other functions.
 pub type ManKey = [u8; 16];
 
 /// Context for Zigbee Security Manager operations.
-#[cfg_attr(feature = "le-stream", derive(FromLeStream, ToLeStream))]
+#[cfg_attr(
+    feature = "le-stream",
+    derive(le_stream::derive::FromLeStream, le_stream::derive::ToLeStream)
+)]
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct ManContext<Eui64>
 where
@@ -95,7 +94,10 @@ where
 }
 
 /// This data structure contains the metadata pertaining to an network key.
-#[cfg_attr(feature = "le-stream", derive(FromLeStream, ToLeStream))]
+#[cfg_attr(
+    feature = "le-stream",
+    derive(le_stream::derive::FromLeStream, le_stream::derive::ToLeStream)
+)]
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct ManNetworkKeyInfo {
     network_key_set: bool,
@@ -156,7 +158,10 @@ impl ManNetworkKeyInfo {
 }
 
 /// This data structure contains the metadata pertaining to an APS key.
-#[cfg_attr(feature = "le-stream", derive(FromLeStream, ToLeStream))]
+#[cfg_attr(
+    feature = "le-stream",
+    derive(le_stream::derive::FromLeStream, le_stream::derive::ToLeStream)
+)]
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct ManApsKeyMetadata<Bitmask>
 where
@@ -223,7 +228,11 @@ where
 ///
 /// # Documentation
 /// [Link](https://docs.silabs.com/d/zigbee-stack-api/7.2.2/zigbee-security-manager#sl-zigbee-sec-man-flags-t).
-#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd, FromPrimitive)]
+#[cfg_attr(
+    feature = "num-traits",
+    derive(num_derive::FromPrimitive, num_derive::ToPrimitive)
+)]
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd)]
 #[repr(u8)]
 pub enum ManFlags {
     /// No flags are set.
@@ -249,18 +258,4 @@ pub enum ManFlags {
     /// generate a new, unconfirmed key, send it to the requester, and await for a
     /// Verify Key Confirm message.
     UnconfirmedTransientKey = 0x04,
-}
-
-impl From<ManFlags> for u8 {
-    fn from(man_flags: ManFlags) -> Self {
-        man_flags as Self
-    }
-}
-
-impl TryFrom<u8> for ManFlags {
-    type Error = u8;
-
-    fn try_from(value: u8) -> Result<Self, Self::Error> {
-        Self::from_u8(value).ok_or(value)
-    }
 }

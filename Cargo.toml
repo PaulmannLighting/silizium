@@ -1,21 +1,26 @@
 [package]
 name = "siliconlabs"
 description = "Core library for software by Silicon Labs"
+authors = ["Richard Neumnn <neumann@paulmann.de>"]
 license = "MIT"
 repository = "https://github.com/PaulmannLighting/siliconlabs"
 keywords = ["silicon", "labs", "library"]
 categories = ["data-structures", "hardware-support", "network-programming"]
+documentation = ""
 version = "0.2.0"
 edition = "2021"
-authors = ["Richard Neumnn <neumann@paulmann.de>"]
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+exclude = [".gitignore"]
+publish = false
 
 [dependencies]
-num-derive = "0.4"
-num-traits = "0.2"
-le-stream = { version = "0.4", features = ["derive"], optional = true }
+num-derive = { version = "0.4", optional = true }
+num-traits = { version = "0.2", optional = true }
+le-stream = { version = "0.4", optional = true }
 macaddr = "1.0.1"
+
+[features]
+le-stream = ["le-stream/derive"]
+num-traits = ["dep:num-traits", "dep:num-derive"]
 
 [lints.rust]
 absolute_paths_not_starting_with_crate = "warn"
