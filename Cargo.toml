@@ -16,7 +16,7 @@ publish = false
 num-derive = { version = "0.4", optional = true }
 num-traits = { version = "0.2", optional = true }
 le-stream = { version = "0.4", optional = true }
-macaddr = "1.0.1"
+macaddr = "1.0"
 
 [features]
 le-stream = ["le-stream/derive"]
