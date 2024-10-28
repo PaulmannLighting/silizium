@@ -10,7 +10,7 @@ pub type ManKey = [u8; 16];
     feature = "le-stream",
     derive(le_stream::derive::FromLeStream, le_stream::derive::ToLeStream)
 )]
-#[derive(Clone, Debug, Eq, PartialEq)]
+#[derive(Clone, Debug, Eq, Hash, PartialEq)]
 pub struct ManContext<Eui64>
 where
     Eui64: Copy,
@@ -98,7 +98,7 @@ where
     feature = "le-stream",
     derive(le_stream::derive::FromLeStream, le_stream::derive::ToLeStream)
 )]
-#[derive(Clone, Debug, Eq, PartialEq)]
+#[derive(Clone, Debug, Eq, Hash, PartialEq)]
 pub struct ManNetworkKeyInfo {
     network_key_set: bool,
     alternate_network_key_set: bool,
@@ -162,7 +162,7 @@ impl ManNetworkKeyInfo {
     feature = "le-stream",
     derive(le_stream::derive::FromLeStream, le_stream::derive::ToLeStream)
 )]
-#[derive(Clone, Debug, Eq, PartialEq)]
+#[derive(Clone, Debug, Eq, Hash, PartialEq)]
 pub struct ManApsKeyMetadata<Bitmask>
 where
     Bitmask: Copy,
