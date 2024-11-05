@@ -1,3 +1,4 @@
+use macaddr::MacAddr8;
 use num_traits::FromPrimitive;
 
 use crate::zigbee::security::man::{DerivedKeyType, Flags, KeyType};
@@ -8,30 +9,24 @@ use crate::zigbee::security::man::{DerivedKeyType, Flags, KeyType};
     derive(le_stream::derive::FromLeStream, le_stream::derive::ToLeStream)
 )]
 #[derive(Clone, Debug, Eq, Hash, PartialEq)]
-pub struct Context<Eui64>
-where
-    Eui64: Copy,
-{
+pub struct Context {
     core_key_type: u8,
     key_index: u8,
     derived_type: u8,
-    eui64: Eui64,
+    eui64: MacAddr8,
     multi_network_index: u8,
     flags: u8,
     psa_key_alg_permission: u32,
 }
 
-impl<Eui64> Context<Eui64>
-where
-    Eui64: Copy,
-{
+impl Context {
     /// Creates a new `Context`.
     #[must_use]
     pub const fn new(
         core_key_type: KeyType,
         key_index: u8,
         derived_type: DerivedKeyType,
-        eui64: Eui64,
+        eui64: MacAddr8,
         multi_network_index: u8,
         flags: Flags,
         psa_key_alg_permission: u32,
@@ -73,7 +68,7 @@ where
 
     /// Return the EUI64 associated with this key.
     #[must_use]
-    pub const fn eui64(&self) -> Eui64 {
+    pub const fn eui64(&self) -> MacAddr8 {
         self.eui64
     }
 

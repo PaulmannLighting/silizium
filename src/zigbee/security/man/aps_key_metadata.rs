@@ -6,24 +6,18 @@ use std::time::Duration;
     derive(le_stream::derive::FromLeStream, le_stream::derive::ToLeStream)
 )]
 #[derive(Clone, Debug, Eq, Hash, PartialEq)]
-pub struct ApsKeyMetadata<Bitmask>
-where
-    Bitmask: Copy,
-{
-    bitmask: Bitmask,
+pub struct ApsKeyMetadata {
+    bitmask: u16,
     outgoing_frame_counter: u32,
     incoming_frame_counter: u32,
     ttl_in_seconds: u16,
 }
 
-impl<Bitmask> ApsKeyMetadata<Bitmask>
-where
-    Bitmask: Copy,
-{
+impl ApsKeyMetadata {
     /// Creates a new `ApsKeyMetadata`.
     #[must_use]
     pub const fn new(
-        bitmask: Bitmask,
+        bitmask: u16,
         outgoing_frame_counter: u32,
         incoming_frame_counter: u32,
         ttl_in_seconds: u16,
@@ -38,7 +32,7 @@ where
 
     /// Returns the bitmask.
     #[must_use]
-    pub const fn bitmask(&self) -> Bitmask {
+    pub const fn bitmask(&self) -> u16 {
         self.bitmask
     }
 
