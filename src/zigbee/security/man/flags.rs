@@ -1,3 +1,5 @@
+use std::fmt::{Display, LowerHex, UpperHex};
+
 use num_derive::FromPrimitive;
 
 /// Security Manager context flags.
@@ -30,4 +32,22 @@ pub enum Flags {
     /// generate a new, unconfirmed key, send it to the requester, and await for a
     /// Verify Key Confirm message.
     UnconfirmedTransientKey = 0x04,
+}
+
+impl Display for Flags {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{self:?}")
+    }
+}
+
+impl LowerHex for Flags {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{:#04x}", *self as u8)
+    }
+}
+
+impl UpperHex for Flags {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{:#04X}", *self as u8)
+    }
 }
