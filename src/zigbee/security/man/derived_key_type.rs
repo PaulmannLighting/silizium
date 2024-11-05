@@ -1,3 +1,5 @@
+use std::fmt::{Display, LowerHex, UpperHex};
+
 /// Derived keys are calculated when performing Zigbee crypto operations.
 ///
 /// The stack makes use of these derivations.
@@ -21,4 +23,22 @@ pub enum DerivedKeyType {
     TcSwapOutKey = 0x0008,
     /// For a TC using hashed link keys, hashed the root key against the supplied EUI in context.
     TcHashedLinkKey = 0x0010,
+}
+
+impl Display for DerivedKeyType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{self:?}")
+    }
+}
+
+impl LowerHex for DerivedKeyType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{:#06x}", *self as u16)
+    }
+}
+
+impl UpperHex for DerivedKeyType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{:#06X}", *self as u16)
+    }
 }

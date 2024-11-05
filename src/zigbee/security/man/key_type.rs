@@ -1,3 +1,5 @@
+use std::fmt::{Display, LowerHex, UpperHex};
+
 /// The list of supported key types used by Zigbee Security Manager.
 #[cfg_attr(feature = "num-traits", derive(num_derive::FromPrimitive))]
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd)]
@@ -55,4 +57,22 @@ pub enum KeyType {
     ///
     /// Intended for use by the Zigbee stack.
     Internal,
+}
+
+impl Display for KeyType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{self:?}")
+    }
+}
+
+impl LowerHex for KeyType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{:#04x}", *self as u8)
+    }
+}
+
+impl UpperHex for KeyType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{:#04X}", *self as u8)
+    }
 }
