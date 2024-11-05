@@ -1,4 +1,6 @@
-use crate::zigbee::security::man::Key;
+use num_traits::FromPrimitive;
+
+use crate::zigbee::security::man::{DerivedKeyType, KeyType};
 
 /// Context for Zigbee Security Manager operations.
 #[cfg_attr(
@@ -10,7 +12,7 @@ pub struct Context<Eui64>
 where
     Eui64: Copy,
 {
-    core_key_type: Key,
+    core_key_type: u8,
     key_index: u8,
     derived_type: u8,
     eui64: Eui64,
@@ -26,18 +28,18 @@ where
     /// Creates a new `Context`.
     #[must_use]
     pub const fn new(
-        core_key_type: Key,
+        core_key_type: KeyType,
         key_index: u8,
-        derived_type: u8,
+        derived_type: DerivedKeyType,
         eui64: Eui64,
         multi_network_index: u8,
         flags: u8,
         psa_key_alg_permission: u32,
     ) -> Self {
         Self {
-            core_key_type,
+            core_key_type: core_key_type as u8,
             key_index,
-            derived_type,
+            derived_type: derived_type as u8,
             eui64,
             multi_network_index,
             flags,
@@ -46,9 +48,12 @@ where
     }
 
     /// Returns the type of key being referenced.
-    #[must_use]
-    pub const fn core_key_type(&self) -> &Key {
-        &self.core_key_type
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if the key type is not recognized.
+    pub fn core_key_type(&self) -> Result<KeyType, u8> {
+        KeyType::from_u8(self.core_key_type).ok_or(self.core_key_type)
     }
 
     /// Returns the index of the referenced key.
@@ -58,9 +63,12 @@ where
     }
 
     /// Returns the type of key derivation operation to perform on a key.
-    #[must_use]
-    pub const fn derived_type(&self) -> u8 {
-        self.derived_type
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if the derived key type is not recognized.
+    pub fn derived_type(&self) -> Result<DerivedKeyType, u8> {
+        DerivedKeyType::from_u8(self.derived_type).ok_or(self.derived_type)
     }
 
     /// Return the EUI64 associated with this key.

@@ -1,5 +1,7 @@
 use std::fmt::{Display, Formatter, LowerHex, UpperHex};
 
+use num_derive::FromPrimitive;
+
 pub use space::Space;
 
 mod space;
@@ -7,8 +9,7 @@ mod space;
 /// Status codes common across all platforms.
 ///
 /// See [docs.silabs.com](https://docs.silabs.com/mcu/5.9/efr32bg1/group-sl-status) for further information.
-#[cfg_attr(feature = "num-traits", derive(num_derive::FromPrimitive))]
-#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd)]
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd, FromPrimitive)]
 #[repr(u32)]
 pub enum Status {
     /// No error.

@@ -1,9 +1,10 @@
+use num_derive::FromPrimitive;
+
 /// Security Manager context flags.
 ///
 /// # Documentation
 /// [Link](https://docs.silabs.com/d/zigbee-stack-api/7.2.2/zigbee-security-manager#sl-zigbee-sec-man-flags-t).
-#[cfg_attr(feature = "num-traits", derive(num_derive::FromPrimitive))]
-#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd)]
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd, FromPrimitive)]
 #[repr(u8)]
 pub enum Flags {
     /// No flags are set.

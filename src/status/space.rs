@@ -1,7 +1,6 @@
 use std::fmt::{Display, Formatter, LowerHex, UpperHex};
 
 /// Space codes common across all platforms.
-#[cfg_attr(feature = "num-traits", derive(num_derive::FromPrimitive))]
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd)]
 #[repr(u32)]
 pub enum Space {

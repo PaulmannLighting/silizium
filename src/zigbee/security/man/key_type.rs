@@ -1,8 +1,9 @@
 use std::fmt::{Display, LowerHex, UpperHex};
 
+use num_derive::FromPrimitive;
+
 /// The list of supported key types used by Zigbee Security Manager.
-#[cfg_attr(feature = "num-traits", derive(num_derive::FromPrimitive))]
-#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd)]
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd, FromPrimitive)]
 #[repr(u8)]
 pub enum KeyType {
     /// No key type.

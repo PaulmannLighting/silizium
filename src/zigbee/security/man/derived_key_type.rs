@@ -1,5 +1,7 @@
 use std::fmt::{Display, LowerHex, UpperHex};
 
+use num_derive::FromPrimitive;
+
 /// Derived keys are calculated when performing Zigbee crypto operations.
 ///
 /// The stack makes use of these derivations.
@@ -7,8 +9,7 @@ use std::fmt::{Display, LowerHex, UpperHex};
 /// Compounding derivations can be specified by using an or-equals on two derived types if
 /// applicable; this is limited to performing the key-transport, key-load, or verify-key hashes on
 /// either the TC Swap Out or TC Hashed Link keys.
-#[cfg_attr(feature = "num-traits", derive(num_derive::FromPrimitive))]
-#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd)]
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd, FromPrimitive)]
 #[repr(u16)]
 pub enum DerivedKeyType {
     /// Perform no derivation; use the key as is.
