@@ -1,6 +1,6 @@
 use num_traits::FromPrimitive;
 
-use crate::zigbee::security::man::{DerivedKeyType, KeyType};
+use crate::zigbee::security::man::{DerivedKeyType, Flags, KeyType};
 
 /// Context for Zigbee Security Manager operations.
 #[cfg_attr(
@@ -33,7 +33,7 @@ where
         derived_type: DerivedKeyType,
         eui64: Eui64,
         multi_network_index: u8,
-        flags: u8,
+        flags: Flags,
         psa_key_alg_permission: u32,
     ) -> Self {
         Self {
@@ -42,7 +42,7 @@ where
             derived_type: derived_type as u8,
             eui64,
             multi_network_index,
-            flags,
+            flags: flags.bits(),
             psa_key_alg_permission,
         }
     }
@@ -85,8 +85,8 @@ where
 
     /// Returns the flag bitmask.
     #[must_use]
-    pub const fn flags(&self) -> u8 {
-        self.flags
+    pub const fn flags(&self) -> Flags {
+        Flags::from_bits_retain(self.flags)
     }
 
     /// Returns the algorithm to use with this key (for PSA APIs).

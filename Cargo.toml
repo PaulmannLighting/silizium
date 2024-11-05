@@ -13,9 +13,10 @@ exclude = [".gitignore"]
 publish = false
 
 [dependencies]
+bitflags = "2.6"
+le-stream = { version = "0.4", features = ["derive"], optional = true }
 num-derive = { version = "0.4" }
 num-traits = { version = "0.2" }
-le-stream = { version = "0.4", features = ["derive"], optional = true }
 
 [features]
 le-stream = ["dep:le-stream"]
