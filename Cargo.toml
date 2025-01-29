@@ -1,9 +1,9 @@
 [package]
-name = "siliconlabs"
-description = "Core library for software by Silicon Labs"
+name = "silizium"
+description = "Common data structures for certain chips"
 authors = ["Richard Neumnn <neumann@paulmann.de>"]
 license = "MIT"
-repository = "https://github.com/PaulmannLighting/siliconlabs"
+repository = "https://github.com/PaulmannLighting/silizium"
 keywords = ["silicon", "labs", "library"]
 categories = ["data-structures", "hardware-support", "network-programming"]
 documentation = ""
