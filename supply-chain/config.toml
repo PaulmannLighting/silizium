@@ -1,0 +1,49 @@
+
+# cargo-vet config file
+
+[cargo-vet]
+version = "0.10"
+
+[[exemptions.autocfg]]
+version = "1.4.0"
+criteria = "safe-to-deploy"
+
+[[exemptions.bitflags]]
+version = "2.9.0"
+criteria = "safe-to-deploy"
+
+[[exemptions.le-stream]]
+version = "0.5.0"
+criteria = "safe-to-deploy"
+
+[[exemptions.le-stream-derive]]
+version = "0.4.2"
+criteria = "safe-to-deploy"
+
+[[exemptions.macaddr]]
+version = "1.0.1"
+criteria = "safe-to-deploy"
+
+[[exemptions.num-derive]]
+version = "0.4.2"
+criteria = "safe-to-deploy"
+
+[[exemptions.num-traits]]
+version = "0.2.19"
+criteria = "safe-to-deploy"
+
+[[exemptions.proc-macro2]]
+version = "1.0.94"
+criteria = "safe-to-deploy"
+
+[[exemptions.quote]]
+version = "1.0.40"
+criteria = "safe-to-deploy"
+
+[[exemptions.syn]]
+version = "2.0.100"
+criteria = "safe-to-deploy"
+
+[[exemptions.unicode-ident]]
+version = "1.0.18"
+criteria = "safe-to-deploy"
