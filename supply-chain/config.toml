@@ -19,7 +19,3 @@ url = "https://raw.githubusercontent.com/mozilla/supply-chain/main/audits.toml"
 [[exemptions.macaddr]]
 version = "1.0.1"
 criteria = "safe-to-deploy"
-
-[[exemptions.syn]]
-version = "2.0.100"
-criteria = "safe-to-deploy"
