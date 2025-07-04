@@ -1,10 +1,10 @@
 # silizium
 
-Common data structures used by certain chips.
+Common data structures used by certain Silicon Labs chips.
 
-## Work in progress
+## Legal
 
-This is a work in progress.
+This project is free software and is not affiliated with Siliconlabs.
 
 ## Contribution guidelines
 
