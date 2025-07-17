@@ -1,4 +1,4 @@
-use std::time::Duration;
+use core::time::Duration;
 
 /// This data structure contains the metadata pertaining to an APS key.
 #[cfg_attr(

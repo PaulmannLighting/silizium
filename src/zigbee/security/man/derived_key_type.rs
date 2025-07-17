@@ -1,4 +1,4 @@
-use std::fmt::{Display, LowerHex, UpperHex};
+use core::fmt::{self, Display, LowerHex, UpperHex};
 
 use num_derive::FromPrimitive;
 
@@ -27,19 +27,19 @@ pub enum DerivedKeyType {
 }
 
 impl Display for DerivedKeyType {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{self:?}")
     }
 }
 
 impl LowerHex for DerivedKeyType {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{:#06x}", *self as u16)
     }
 }
 
 impl UpperHex for DerivedKeyType {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{:#06X}", *self as u16)
     }
 }

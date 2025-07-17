@@ -1,4 +1,4 @@
-use std::fmt::{Display, Formatter, LowerHex, UpperHex};
+use core::fmt::{Display, Formatter, LowerHex, UpperHex};
 
 use num_derive::FromPrimitive;
 
@@ -207,19 +207,19 @@ pub enum Status {
 }
 
 impl Display for Status {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut Formatter<'_>) -> core::fmt::Result {
         write!(f, "Sl{self:?}")
     }
 }
 
 impl LowerHex for Status {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut Formatter<'_>) -> core::fmt::Result {
         write!(f, "{:#010x}", *self as u32)
     }
 }
 
 impl UpperHex for Status {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut Formatter<'_>) -> core::fmt::Result {
         write!(f, "{:#010X}", *self as u32)
     }
 }

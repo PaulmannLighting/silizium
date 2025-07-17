@@ -1,4 +1,4 @@
-use std::fmt::{Display, Formatter, LowerHex, UpperHex};
+use core::fmt::{self, Display, LowerHex, UpperHex};
 
 /// Space codes common across all platforms.
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd)]
@@ -13,19 +13,19 @@ pub enum Space {
 }
 
 impl Display for Space {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "SlSpace{self:?}")
     }
 }
 
 impl LowerHex for Space {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{:#010x}", *self as u32)
     }
 }
 
 impl UpperHex for Space {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{:#010X}", *self as u32)
     }
 }
