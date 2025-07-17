@@ -3,6 +3,7 @@ use core::fmt::{self, Display, LowerHex, UpperHex};
 use num_derive::FromPrimitive;
 
 /// The list of supported key types used by Zigbee Security Manager.
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd, FromPrimitive)]
 #[repr(u8)]
 pub enum KeyType {

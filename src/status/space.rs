@@ -1,6 +1,7 @@
 use core::fmt::{self, Display, LowerHex, UpperHex};
 
 /// Space codes common across all platforms.
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd)]
 #[repr(u32)]
 pub enum Space {

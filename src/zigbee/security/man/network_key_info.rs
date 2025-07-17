@@ -1,4 +1,5 @@
 /// This data structure contains the metadata pertaining to an network key.
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(
     feature = "le-stream",
     derive(le_stream::derive::FromLeStream, le_stream::derive::ToLeStream)

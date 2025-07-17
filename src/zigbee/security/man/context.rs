@@ -4,6 +4,7 @@ use num_traits::FromPrimitive;
 use crate::zigbee::security::man::{DerivedKeyType, Flags, KeyType};
 
 /// Context for Zigbee Security Manager operations.
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(
     feature = "le-stream",
     derive(le_stream::derive::FromLeStream, le_stream::derive::ToLeStream)

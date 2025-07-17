@@ -9,6 +9,7 @@ mod space;
 /// Status codes common across all platforms.
 ///
 /// See [docs.silabs.com](https://docs.silabs.com/mcu/5.9/efr32bg1/group-sl-status) for further information.
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd, FromPrimitive)]
 #[repr(u32)]
 pub enum Status {
