@@ -111,7 +111,7 @@ pub enum Status {
     IoTimeout = 0x0030,
     /// Generic transmission error.
     Transmit = 0x0031,
-    /// Transmit underflowed.
+    /// Transmit underflow occurred.
     TransmitUnderflow = 0x0032,
     /// Transmit is incomplete.
     TransmitIncomplete = 0x0033,
@@ -203,7 +203,7 @@ pub enum Status {
     WifiConnectionAuthFailure = 0x0B1E,
     /// The request failed because the retry limit was exceeded.
     WifiRetryExceeded = 0x0B1F,
-    /// The request failed because the MSDU life time was exceeded.
+    /// The request failed because the `MSDU` lifetime was exceeded.
     WifiTxLifetimeExceeded = 0x0B20,
 }
 
