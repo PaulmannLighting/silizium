@@ -7,7 +7,7 @@ repository = "https://github.com/PaulmannLighting/silizium"
 keywords = ["silicon", "labs", "library"]
 categories = ["data-structures", "hardware-support", "network-programming"]
 documentation = "https://docs.rs/silizium"
-version = "1.0.2"
+version = "1.0.3"
 edition = "2024"
 exclude = [".gitignore"]
 
