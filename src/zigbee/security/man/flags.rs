@@ -15,12 +15,14 @@ bitflags! {
     impl Flags: u8 {
         /// No flags are set.
         const NONE = 0x00;
+
         /// For export APIs, this flag indicates the `key_index` parameter is valid in the `sl_zb_sec_man_context_t` structure.
         ///
         /// This bit is set by the caller when intending to search for a key by `key_index`.
         ///
         /// This flag has no significance for import APIs.
         const KEY_INDEX_IS_VALID = 0b0000_0001;
+
         /// For export APIs, this flag indicates the eui64 parameter is valid in the `sl_zb_sec_man_context_t` structure.
         ///
         /// This bit is set by the caller when intending to search for a key by eui64.
@@ -28,6 +30,7 @@ bitflags! {
         ///
         /// This flag has no significance for import APIs.
         const EUI_IS_VALID = 0b0000_0010;
+
         /// Internal use only.
         ///
         /// This indicates that the transient key being added is an unconfirmed, updated key.
