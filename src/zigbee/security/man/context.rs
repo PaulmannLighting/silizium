@@ -16,7 +16,7 @@ pub struct Context {
     derived_type: u8,
     eui64: MacAddr8,
     multi_network_index: u8,
-    flags: u8,
+    flags: Flags,
     psa_key_alg_permission: u32,
 }
 
@@ -38,7 +38,7 @@ impl Context {
             derived_type: derived_type as u8,
             eui64,
             multi_network_index,
-            flags: flags.bits(),
+            flags,
             psa_key_alg_permission,
         }
     }
@@ -82,7 +82,7 @@ impl Context {
     /// Returns the flag bitmask.
     #[must_use]
     pub const fn flags(&self) -> Flags {
-        Flags::from_bits_retain(self.flags)
+        self.flags
     }
 
     /// Returns the algorithm to use with this key (for PSA APIs).

@@ -8,6 +8,10 @@ use bitflags::bitflags;
 ///
 /// See [docs.silabs.com](https://docs.silabs.com/d/zigbee-stack-api/7.2.2/zigbee-security-manager#sl-zigbee-sec-man-flags-t) for further information.
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(
+    feature = "le-stream",
+    derive(le_stream::derive::FromLeStream, le_stream::derive::ToLeStream)
+)]
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Ord, PartialOrd)]
 pub struct Flags(u8);
 
