@@ -8,11 +8,11 @@ use num_derive::FromPrimitive;
 #[repr(u8)]
 pub enum KeyType {
     /// No key type.
-    None,
+    None = 0,
     /// This is the network key, used for encrypting and decrypting network payloads.
     ///
     /// There is only one of these keys in storage.
-    Network,
+    Network = 1,
     /// This is the Trust Center Link Key.
     ///
     /// On the joining device, this is the APS key used to communicate with the trust center.
@@ -21,7 +21,7 @@ pub enum KeyType {
     /// `EMBER_TRUST_CENTER_USES_HASHED_LINK_KEY` bit set).
     ///
     /// There is only one of these keys in storage.
-    TcLink,
+    TcLink = 2,
     /// This is a Trust Center Link Key, but it times out after either
     ///
     ///   - `EMBER_TRANSIENT_KEY_TIMEOUT_S` or
@@ -36,7 +36,7 @@ pub enum KeyType {
     /// of keys before attempting to join.
     ///
     /// This is an indexed key, and local storage can fit as many keys as available RAM allows.
-    TcLinkWithTimeout,
+    TcLinkWithTimeout = 3,
     /// This is an Application link key.
     ///
     /// On both joining devices and the trust center, this key is used in APS encryption and
@@ -44,21 +44,21 @@ pub enum KeyType {
     ///
     /// This is an indexed key table of size `EMBER_KEY_TABLE_SIZE`, so long as there is sufficient
     /// nonvolatile memory to store keys.
-    AppLink,
+    AppLink = 4,
     /// This is the ZLL encryption key for use by algorithms that require it.
-    ZllEncryptionKey,
+    ZllEncryptionKey = 5,
     /// For ZLL, this is the pre-configured link key used during classical `ZigBee` commissioning.
-    ZllPreconfiguredKey,
+    ZllPreconfiguredKey = 6,
     /// This is a Green Power Device (GPD) key used on a Proxy device.
-    GreenPowerProxyTableKey,
+    GreenPowerProxyTableKey = 7,
     /// This is a Green Power Device (GPD) key used on a Sink device.
-    GreenPowerSinkTableKey,
+    GreenPowerSinkTableKey = 8,
     /// his is a generic key type intended to be loaded for one-time hashing or crypto operations.
     ///
     /// This key is not persisted.
     ///
     /// Intended for use by the Zigbee stack.
-    Internal,
+    Internal = 9,
 }
 
 impl Display for KeyType {
