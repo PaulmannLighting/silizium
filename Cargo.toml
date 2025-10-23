@@ -12,7 +12,7 @@ edition = "2024"
 exclude = [".gitignore"]
 
 [dependencies]
-bitflags = "2.9"
+bitflags = "2.10"
 le-stream = { version = "5", features = ["derive", "macaddr"], optional = true }
 macaddr = "1.0"
 num-derive = { version = "0.4" }
