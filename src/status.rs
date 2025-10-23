@@ -2,7 +2,7 @@ use core::fmt::{Display, Formatter, LowerHex, UpperHex};
 
 use num_derive::FromPrimitive;
 
-pub use space::Space;
+pub use self::space::Space;
 
 mod space;
 

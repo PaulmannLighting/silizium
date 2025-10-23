@@ -1,12 +1,12 @@
 //! Security manager module.
 
-pub use aps_key_metadata::ApsKeyMetadata;
-pub use context::Context;
-pub use derived_key_type::DerivedKeyType;
-pub use flags::Flags;
-pub use key::Key;
-pub use key_type::KeyType;
-pub use network_key_info::NetworkKeyInfo;
+pub use self::aps_key_metadata::ApsKeyMetadata;
+pub use self::context::Context;
+pub use self::derived_key_type::DerivedKeyType;
+pub use self::flags::Flags;
+pub use self::key::Key;
+pub use self::key_type::KeyType;
+pub use self::network_key_info::NetworkKeyInfo;
 
 mod aps_key_metadata;
 mod context;
