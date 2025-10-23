@@ -7,7 +7,7 @@ use core::fmt::{self, Display, LowerHex, UpperHex};
 pub enum Space {
     /// Generic space.
     Generic = 0x0000,
-    /// Wifi space.
+    /// Wi-Fi space.
     Wifi = 0x0B00,
     /// Mask Space.
     Mask = 0xFF00,
