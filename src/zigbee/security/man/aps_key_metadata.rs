@@ -4,7 +4,7 @@ use core::time::Duration;
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(
     feature = "le-stream",
-    derive(le_stream::derive::FromLeStream, le_stream::derive::ToLeStream)
+    derive(le_stream::FromLeStream, le_stream::ToLeStream)
 )]
 #[derive(Clone, Debug, Eq, Hash, PartialEq)]
 pub struct ApsKeyMetadata {
