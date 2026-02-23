@@ -209,9 +209,121 @@ pub enum Status {
     WifiTxLifetimeExceeded = 0x0B20,
 }
 
+impl Status {
+    /// Return the name of the status.
+    #[expect(clippy::too_many_lines)]
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Ok => "SL_STATUS_OK",
+            Self::Fail => "SL_STATUS_FAIL",
+            Self::InvalidState => "SL_STATUS_INVALID_STATE",
+            Self::NotReady => "SL_STATUS_NOT_READY",
+            Self::Busy => "SL_STATUS_BUSY",
+            Self::InProgress => "SL_STATUS_IN_PROGRESS",
+            Self::Abort => "SL_STATUS_ABORT",
+            Self::Timeout => "SL_STATUS_TIMEOUT",
+            Self::Permission => "SL_STATUS_PERMISSION",
+            Self::WouldBlock => "SL_STATUS_WOULD_BLOCK",
+            Self::Idle => "SL_STATUS_IDLE",
+            Self::IsWaiting => "SL_STATUS_IS_WAITING",
+            Self::NoneWaiting => "SL_STATUS_NONE_WAITING",
+            Self::Suspended => "SL_STATUS_SUSPENDED",
+            Self::NotAvailable => "SL_STATUS_NOT_AVAILABLE",
+            Self::NotSupported => "SL_STATUS_NOT_SUPPORTED",
+            Self::Initialization => "SL_STATUS_INITIALIZATION",
+            Self::NotInitialized => "SL_STATUS_NOT_INITIALIZED",
+            Self::AlreadyInitialized => "SL_STATUS_ALREADY_INITIALIZED",
+            Self::Deleted => "SL_STATUS_DELETED",
+            Self::Isr => "SL_STATUS_ISR",
+            Self::NetworkUp => "SL_STATUS_NETWORK_UP",
+            Self::NetworkDown => "SL_STATUS_NETWORK_DOWN",
+            Self::NotJoined => "SL_STATUS_NOT_JOINED",
+            Self::NoBeacons => "SL_STATUS_NO_BEACONS",
+            Self::AllocationFailed => "SL_STATUS_ALLOCATION_FAILED",
+            Self::NoMoreResource => "SL_STATUS_NO_MORE_RESOURCE",
+            Self::StatusEmpty => "SL_STATUS_EMPTY",
+            Self::StatusFull => "SL_STATUS_FULL",
+            Self::WouldOverflow => "SL_STATUS_WOULD_OVERFLOW",
+            Self::HasOverflowed => "SL_STATUS_HAS_OVERFLOWED",
+            Self::Ownership => "SL_STATUS_OWNERSHIP",
+            Self::IsOwner => "SL_STATUS_IS_OWNER",
+            Self::InvalidParameter => "SL_STATUS_INVALID_PARAMETER",
+            Self::NullPointer => "SL_STATUS_NULL_POINTER",
+            Self::InvalidConfiguration => "SL_STATUS_INVALID_CONFIGURATION",
+            Self::InvalidMode => "SL_STATUS_INVALID_MODE",
+            Self::InvalidHandle => "SL_STATUS_INVALID_HANDLE",
+            Self::InvalidType => "SL_STATUS_INVALID_TYPE",
+            Self::InvalidIndex => "SL_STATUS_INVALID_INDEX",
+            Self::InvalidRange => "SL_STATUS_INVALID_RANGE",
+            Self::InvalidKey => "SL_STATUS_INVALID_KEY",
+            Self::InvalidCredentials => "SL_STATUS_INVALID_CREDENTIALS",
+            Self::InvalidCount => "SL_STATUS_INVALID_COUNT",
+            Self::NotFound => "SL_STATUS_NOT_FOUND",
+            Self::AlreadyExists => "SL_STATUS_ALREADY_EXISTS",
+            Self::Io => "SL_STATUS_IO",
+            Self::IoTimeout => "SL_STATUS_IO_TIMEOUT",
+            Self::Transmit => "SL_STATUS_TRANSMIT",
+            Self::TransmitUnderflow => "SL_STATUS_TRANSMIT_UNDERFLOW",
+            Self::TransmitIncomplete => "SL_STATUS_TRANSMIT_INCOMPLETE",
+            Self::TransmitBusy => "SL_STATUS_TRANSMIT_BUSY",
+            Self::Receive => "SL_STATUS_RECEIVE",
+            Self::ObjectRead => "SL_STATUS_OBJECT_READ",
+            Self::ObjectWrite => "SL_STATUS_OBJECT_WRITE",
+            Self::MessageTooLong => "SL_STATUS_MESSAGE_TOO_LONG",
+            Self::MfgVersionMismatch => "SL_STATUS_MFG_VERSION_MISMATCH",
+            Self::StackVersionMismatch => "SL_STATUS_STACK_VERSION_MISMATCH",
+            Self::WriteInhibited => "SL_STATUS_WRITE_INHIBITED",
+            Self::VerifyFailed => "SL_STATUS_VERIFY_FAILED",
+            Self::ProgramFailed => "SL_STATUS_PROGRAM_FAILED",
+            Self::EraseFailed => "SL_STATUS_ERASE_FAILED",
+            Self::MacNoData => "SL_STATUS_MAC_NO_DATA",
+            Self::MacNoAckReceived => "SL_STATUS_MAC_NO_ACK_RECEIVED",
+            Self::MacIndirectTimeout => "SL_STATUS_MAC_INDIRECT_TIMEOUT",
+            Self::MacUnknownHeaderType => "SL_STATUS_MAC_UNKNOWN_HEADER_TYPE",
+            Self::MacAckHeaderType => "SL_STATUS_MAC_ACK_HEADER_TYPE",
+            Self::CommandTransmitFailure => "SL_STATUS_COMMAND_TRANSMIT_FAILURE",
+            Self::StorageNvmOpenError => "SL_STATUS_STORAGE_NVM_OPEN_ERROR",
+            Self::ImageChecksumError => "SL_STATUS_IMAGE_CHECKSUM_ERROR",
+            Self::DecryptError => "SL_STATUS_DECRYPT_ERROR",
+            Self::IsInvalid => "SL_STATUS_IS_INVALID",
+            Self::TooLong => "SL_STATUS_TOO_LONG",
+            Self::CommandIncomplete => "SL_STATUS_COMMAND_INCOMPLETE",
+            Self::BadScanDuration => "SL_STATUS_BAD_SCAN_DURATION",
+            Self::WifiInvalidKey => "SL_STATUS_WIFI_INVALID_KEY",
+            Self::WifiFirmwareDownloadTimeout => "SL_STATUS_WIFI_FIRMWARE_DOWNLOAD_TIMEOUT",
+            Self::WifiUnsupportedMessageId => "SL_STATUS_WIFI_UNSUPPORTED_MESSAGE_ID",
+            Self::WifiWarning => "SL_STATUS_WIFI_WARNING",
+            Self::WifiNoPacketToReceive => "SL_STATUS_WIFI_NO_PACKET_TO_RECEIVE",
+            Self::WifiSleepGranted => "SL_STATUS_WIFI_SLEEP_GRANTED",
+            Self::WifiSleepNotGranted => "SL_STATUS_WIFI_SLEEP_NOT_GRANTED",
+            Self::WifiSecureLinkMacKeyError => "SL_STATUS_WIFI_SECURE_LINK_MAC_KEY_ERROR",
+            Self::WifiSecureLinkMacKeyAlreadyBurned => {
+                "SL_STATUS_WIFI_SECURE_LINK_MAC_KEY_ALREADY_BURNED"
+            }
+            Self::WifiSecureLinkRamModeNotAllowed => {
+                "SL_STATUS_WIFI_SECURE_LINK_RAM_MODE_NOT_ALLOWED"
+            }
+            Self::WifiSecureLinkFailedUnknownMode => {
+                "SL_STATUS_WIFI_SECURE_LINK_FAILED_UNKNOWN_MODE"
+            }
+            Self::WifiSecureLinkExchangeFailed => "SL_STATUS_WIFI_SECURE_LINK_EXCHANGE_FAILED",
+            Self::WifiWrongState => "SL_STATUS_WIFI_WRONG_STATE",
+            Self::WifiChannelNotAllowed => "SL_STATUS_WIFI_CHANNEL_NOT_ALLOWED",
+            Self::WifiNoMatchingAp => "SL_STATUS_WIFI_NO_MATCHING_AP",
+            Self::WifiConnectionAborted => "SL_STATUS_WIFI_CONNECTION_ABORTED",
+            Self::WifiConnectionTimeout => "SL_STATUS_WIFI_CONNECTION_TIMEOUT",
+            Self::WifiConnectionRejectedByAp => "SL_STATUS_WIFI_CONNECTION_REJECTED_BY_AP",
+            Self::WifiConnectionAuthFailure => "SL_STATUS_WIFI_CONNECTION_AUTH_FAILURE",
+            Self::WifiRetryExceeded => "SL_STATUS_WIFI_RETRY_EXCEEDED",
+            Self::WifiTxLifetimeExceeded => "SL_STATUS_WIFI_TX_LIFETIME_EXCEEDED",
+        }
+    }
+}
+
 impl Display for Status {
     fn fmt(&self, f: &mut Formatter<'_>) -> core::fmt::Result {
-        write!(f, "Sl{self:?}")
+        write!(f, "{}", self.as_str())
     }
 }
 
