@@ -27,9 +27,24 @@ pub enum DerivedKeyType {
     TcHashedLinkKey = 0x0010,
 }
 
+impl DerivedKeyType {
+    /// Return the name of the derived key type.
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::None => "SL_ZB_SEC_MAN_DERIVED_KEY_TYPE_NONE",
+            Self::TransportKey => "SL_ZB_SEC_MAN_DERIVED_KEY_TYPE_KEY_TRANSPORT_KEY",
+            Self::LoadKey => "SL_ZB_SEC_MAN_DERIVED_KEY_TYPE_KEY_LOAD_KEY",
+            Self::VerifyKey => "SL_ZB_SEC_MAN_DERIVED_KEY_TYPE_VERIFY_KEY",
+            Self::TcSwapOutKey => "SL_ZB_SEC_MAN_DERIVED_KEY_TYPE_TC_SWAP_OUT_KEY",
+            Self::TcHashedLinkKey => "SL_ZB_SEC_MAN_DERIVED_KEY_TYPE_TC_HASHED_LINK_KEY",
+        }
+    }
+}
+
 impl Display for DerivedKeyType {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{self:?}")
+        write!(f, "{}", self.as_str())
     }
 }
 
