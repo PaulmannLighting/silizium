@@ -18,7 +18,7 @@ pub struct Flags(u8);
 bitflags! {
     impl Flags: u8 {
         /// No flags are set.
-        const NONE = 0x00;
+        const NONE = 0b0000_0000;
 
         /// For export APIs, this flag indicates the `key_index` parameter is valid in the
         /// [`Context`](crate::zigbee::security::man::Context) structure.
