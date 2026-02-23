@@ -13,9 +13,21 @@ pub enum Space {
     Mask = 0xFF00,
 }
 
+impl Space {
+    /// Return the name of the Space.
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Generic => "SL_STATUS_GENERIC_SPACE",
+            Self::Wifi => "SL_STATUS_WIFI_SPACE",
+            Self::Mask => "SL_STATUS_SPACE_MASK",
+        }
+    }
+}
+
 impl Display for Space {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "SlSpace{self:?}")
+        write!(f, "{}", self.as_str())
     }
 }
 
