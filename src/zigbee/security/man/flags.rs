@@ -1,5 +1,3 @@
-use core::fmt::{self, Display};
-
 use bitflags::bitflags;
 
 /// Security Manager context flags.
@@ -45,11 +43,5 @@ bitflags! {
         /// generate a new, unconfirmed key, send it to the requester, and await for a
         /// Verify Key Confirm message.
         const UNCONFIRMED_TRANSIENT_KEY = 0b0000_0100;
-    }
-}
-
-impl Display for Flags {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{self:?}")
     }
 }
