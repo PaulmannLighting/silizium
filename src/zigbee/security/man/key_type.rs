@@ -61,9 +61,28 @@ pub enum KeyType {
     Internal = 9,
 }
 
+impl KeyType {
+    /// Return the name of the key type.
+    #[must_use]
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::None => "SL_ZB_SEC_MAN_KEY_TYPE_NONE",
+            Self::Network => "SL_ZB_SEC_MAN_KEY_TYPE_NETWORK",
+            Self::TcLink => "SL_ZB_SEC_MAN_KEY_TYPE_TC_LINK",
+            Self::TcLinkWithTimeout => "SL_ZB_SEC_MAN_KEY_TYPE_TC_LINK_WITH_TIMEOUT",
+            Self::AppLink => "SL_ZB_SEC_MAN_KEY_TYPE_APP_LINK",
+            Self::ZllEncryptionKey => "SL_ZB_SEC_MAN_KEY_TYPE_ZLL_ENCRYPTION_KEY",
+            Self::ZllPreconfiguredKey => "SL_ZB_SEC_MAN_KEY_TYPE_ZLL_PRECONFIGURED_KEY",
+            Self::GreenPowerProxyTableKey => "SL_ZB_SEC_MAN_KEY_TYPE_GREEN_POWER_PROXY_TABLE_KEY",
+            Self::GreenPowerSinkTableKey => "SL_ZB_SEC_MAN_KEY_TYPE_GREEN_POWER_SINK_TABLE_KEY",
+            Self::Internal => "SL_ZB_SEC_MAN_KEY_TYPE_INTERNAL",
+        }
+    }
+}
+
 impl Display for KeyType {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{self:?}")
+        write!(f, "{}", self.as_str())
     }
 }
 
