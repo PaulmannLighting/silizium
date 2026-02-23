@@ -46,19 +46,19 @@ pub enum KeyType {
     /// nonvolatile memory to store keys.
     AppLink = 4,
     /// This is the ZLL encryption key for use by algorithms that require it.
-    ZllEncryptionKey = 5,
+    ZllEncryptionKey = 6,
     /// For ZLL, this is the pre-configured link key used during classical `ZigBee` commissioning.
-    ZllPreconfiguredKey = 6,
+    ZllPreconfiguredKey = 7,
     /// This is a Green Power Device (GPD) key used on a Proxy device.
-    GreenPowerProxyTableKey = 7,
+    GreenPowerProxyTableKey = 8,
     /// This is a Green Power Device (GPD) key used on a Sink device.
-    GreenPowerSinkTableKey = 8,
+    GreenPowerSinkTableKey = 9,
     /// his is a generic key type intended to be loaded for one-time hashing or crypto operations.
     ///
     /// This key is not persisted.
     ///
     /// Intended for use by the Zigbee stack.
-    Internal = 9,
+    Internal = 10,
 }
 
 impl KeyType {
