@@ -15,14 +15,19 @@ use num_derive::FromPrimitive;
 pub enum DerivedKeyType {
     /// Perform no derivation; use the key as is.
     None = 0x0000,
+
     /// Perform the Key-Transport-Key hash.
     TransportKey = 0x0001,
+
     /// Perform the Key-Load-Key hash.
     LoadKey = 0x0002,
+
     /// Perform the Verify Key hash.
     VerifyKey = 0x0004,
+
     /// Perform a simple AES hash of the key for TC backup.
     TcSwapOutKey = 0x0008,
+
     /// For a TC using hashed link keys, hashed the root key against the supplied EUI in context.
     TcHashedLinkKey = 0x0010,
 }
