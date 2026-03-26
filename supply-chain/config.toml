@@ -1,3 +1,4 @@
+
 # cargo-vet config file
 
 [cargo-vet]
@@ -11,55 +12,3 @@ url = "https://raw.githubusercontent.com/mozilla/supply-chain/main/audits.toml"
 
 [policy.silizium]
 audit-as-crates-io = true
-
-[[exemptions.autocfg]]
-version = "1.5.0"
-criteria = "safe-to-deploy"
-
-[[exemptions.bitflags]]
-version = "2.11.0"
-criteria = "safe-to-deploy"
-
-[[exemptions.le-stream]]
-version = "8.0.0"
-criteria = "safe-to-deploy"
-
-[[exemptions.le-stream-derive]]
-version = "1.3.2"
-criteria = "safe-to-deploy"
-
-[[exemptions.macaddr]]
-version = "1.0.1"
-criteria = "safe-to-deploy"
-
-[[exemptions.proc-macro2]]
-version = "1.0.106"
-criteria = "safe-to-deploy"
-
-[[exemptions.quote]]
-version = "1.0.45"
-criteria = "safe-to-deploy"
-
-[[exemptions.serde]]
-version = "1.0.228"
-criteria = "safe-to-deploy"
-
-[[exemptions.serde_core]]
-version = "1.0.228"
-criteria = "safe-to-deploy"
-
-[[exemptions.serde_derive]]
-version = "1.0.228"
-criteria = "safe-to-deploy"
-
-[[exemptions.silizium]]
-version = "2.0.0"
-criteria = "safe-to-deploy"
-
-[[exemptions.syn]]
-version = "2.0.117"
-criteria = "safe-to-deploy"
-
-[[exemptions.unicode-ident]]
-version = "1.0.24"
-criteria = "safe-to-deploy"
