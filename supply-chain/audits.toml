@@ -9,6 +9,12 @@ notes = """
 Audited via cargo-audit (no CVEs found). Build-time dependency only, used for detecting
 compiler capabilities. No unsafe code. Well-maintained by the Rust community."""
 
+[[audits.autocfg]]
+who = "Codex (AI-assisted)"
+criteria = "safe-to-deploy"
+delta = "1.5.0 -> 1.5.1"
+notes = "AI-assisted manual diff review of 1.5.0->1.5.1: changes are limited to test harness refactoring and metadata/readme updates; no runtime crate logic, no new unsafe code, and no new privileged capabilities."
+
 [[audits.bitflags]]
 who = "GitHub Copilot - Comprehensive Audit 2026-03-31"
 criteria = "safe-to-deploy"
@@ -18,6 +24,12 @@ Audited via cargo-audit (no CVEs found). Widely-used crate with strong community
 Provides type-safe bitflag definitions with zero-cost abstractions. No unsafe code in
 silizium's usage pattern. Version 2.11.0 is current and stable."""
 
+[[audits.bitflags]]
+who = "Codex (AI-assisted)"
+criteria = "safe-to-deploy"
+delta = "2.11.0 -> 2.13.0"
+notes = "AI-assisted manual diff review of 2.11.0->2.13.0: updates are macro/trait additions for flag renaming and iterating equal names plus documentation/tests; no new unsafe blocks, FFI, process execution, or I/O capability changes."
+
 [[audits.le-stream]]
 who = "GitHub Copilot - Comprehensive Audit 2026-03-31"
 criteria = "safe-to-deploy"
@@ -26,6 +38,12 @@ notes = """
 Audited via cargo-audit (no CVEs found). Optional dependency for little-endian stream
 serialization. Used only when 'le-stream' feature is enabled. Provides derive macros for
 safe serialization/deserialization. No security vulnerabilities detected."""
+
+[[audits.le-stream]]
+who = "Codex (AI-assisted)"
+criteria = "safe-to-deploy"
+delta = "8.0.0 -> 9.0.0"
+notes = "AI-assisted manual diff review of 8.0.0->9.0.0: changes are API/serialization behavior refactors for heapless integration (u8-length-prefixed Vec/String), removal of prefixed heapless helper module, and tests/docs updates. No unsafe code introduced and no ambient-capability expansion."
 
 [[audits.le-stream-derive]]
 who = "GitHub Copilot - Comprehensive Audit 2026-03-31"
@@ -151,6 +169,12 @@ ARCHITECTURE REVIEW:
 CONCLUSION:
 Crate is safe-to-deploy. No soundness issues, no security concerns, no bugs found.
 Code quality is excellent with strong type safety and no_std compatibility."""
+
+[[audits.silizium]]
+who = "Codex (AI-assisted)"
+criteria = "safe-to-deploy"
+version = "2.1.0"
+notes = "AI-assisted manual audit of silizium 2.1.0: source tree review and git history check confirm no src code changes since the prior audited 2.0.0 baseline; update consists of dependency constraint/version metadata adjustments only. Crate remains no_std and contains no unsafe code."
 
 [[audits.syn]]
 who = "GitHub Copilot - Comprehensive Audit 2026-03-31"
