@@ -16,9 +16,9 @@ checksum = "843867be96c8daad0d758b57df9392b6d8d271134fce549de6ce169ff98a92af"
 
 [[package]]
 name = "le-stream"
-version = "8.0.0"
+version = "9.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1d3750fe27cedd25470b55174eb1360904512951e3421a16874fdf94c940c28f"
+checksum = "97287cdaaa28eeddb1b3fae31402a3702e4a48408942cc8f1c3d2b3f5187f505"
 dependencies = [
  "le-stream-derive",
  "macaddr",
